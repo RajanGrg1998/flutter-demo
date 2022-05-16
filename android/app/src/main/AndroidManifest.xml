@@ -8,7 +8,7 @@
    <application
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"
-        android:label="video_recorder_app"
+        android:label="ClipCam"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

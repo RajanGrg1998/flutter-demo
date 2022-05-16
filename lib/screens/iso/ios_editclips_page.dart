@@ -22,7 +22,7 @@ class IOSEditClipPage extends StatelessWidget {
       navigationBar: CupertinoNavigationBar(
         padding: EdgeInsetsDirectional.zero,
         leading:
-            clipCon.isMultiSelectionEnabled && clipCon.selectedItem.isNotEmpty
+            clipCon.isMultiSelectionEnabled || clipCon.selectedItem.isNotEmpty
                 ? CupertinoButton(
                     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                     child: Text(
