@@ -160,56 +160,71 @@ class _RecordingPageState extends State<RecordingPage>
                 '1080p',
                 style: TextStyle(fontSize: 14, color: CupertinoColors.white),
               ),
-              leading: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Expanded(
-                    child: CupertinoButton(
-                      onPressed: () async {
-                        if (isRearCameraSelected) {
-                          setState(() {
-                            currentFlashMode =
-                                onFlashClick ? FlashMode.torch : FlashMode.off;
-                          });
-
-                          setState(() {
-                            onFlashClick = !onFlashClick;
-                          });
-
-                          await _cameraController!
-                              .setFlashMode(currentFlashMode!);
-                        }
-                      },
-                      child: Icon(
-                          onFlashClick
-                              ? CupertinoIcons.lightbulb_slash
-                              : CupertinoIcons.lightbulb,
-                          size: 20,
-                          color: onFlashClick
-                              ? CupertinoColors.white
-                              : CupertinoColors.systemYellow),
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: CupertinoButton(
-                      onPressed: () {
-                        onNewCameraSelected(
-                          cameras[isRearCameraSelected ? 1 : 0],
-                        );
-                        setState(() {
-                          isRearCameraSelected = !isRearCameraSelected;
-                        });
-                      },
-                      child: Icon(
-                        CupertinoIcons.camera_rotate,
-                        size: 20,
-                        color: CupertinoColors.white,
-                      ),
-                    ),
-                  ),
-                ],
+              leading: CupertinoButton(
+                onPressed: () {
+                  onNewCameraSelected(
+                    cameras[isRearCameraSelected ? 1 : 0],
+                  );
+                  setState(() {
+                    isRearCameraSelected = !isRearCameraSelected;
+                  });
+                },
+                child: Icon(
+                  CupertinoIcons.camera_rotate,
+                  size: 20,
+                  color: CupertinoColors.white,
+                ),
               ),
+              // leading: Row(
+              //   mainAxisSize: MainAxisSize.min,
+              //   children: [
+              //     // Expanded(
+              //     //   child: CupertinoButton(
+              //     //     onPressed: () async {
+              //     //       if (isRearCameraSelected) {
+              //     //         setState(() {
+              //     //           currentFlashMode =
+              //     //               onFlashClick ? FlashMode.torch : FlashMode.off;
+              //     //         });
+
+              //     //         setState(() {
+              //     //           onFlashClick = !onFlashClick;
+              //     //         });
+
+              //     //         await _cameraController!
+              //     //             .setFlashMode(currentFlashMode!);
+              //     //       }
+              //     //     },
+              //     //     child: Icon(
+              //     //         onFlashClick
+              //     //             ? CupertinoIcons.lightbulb_slash
+              //     //             : CupertinoIcons.lightbulb,
+              //     //         size: 20,
+              //     //         color: onFlashClick
+              //     //             ? CupertinoColors.white
+              //     //             : CupertinoColors.systemYellow),
+              //     //   ),
+              //     // ),
+              //     // SizedBox(width: 10),
+              //     Expanded(
+              //       child: CupertinoButton(
+              //         onPressed: () {
+              //           onNewCameraSelected(
+              //             cameras[isRearCameraSelected ? 1 : 0],
+              //           );
+              //           setState(() {
+              //             isRearCameraSelected = !isRearCameraSelected;
+              //           });
+              //         },
+              //         child: Icon(
+              //           CupertinoIcons.camera_rotate,
+              //           size: 20,
+              //           color: CupertinoColors.white,
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ),
             key: scaffoldKey,
             backgroundColor: CupertinoColors.black,
