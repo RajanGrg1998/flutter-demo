@@ -25,7 +25,12 @@ class IOSEditClipPage extends StatelessWidget {
             clipCon.isMultiSelectionEnabled && clipCon.selectedItem.isNotEmpty
                 ? CupertinoButton(
                     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    child: Text('Cancel'),
+                    child: Text(
+                      'Cancel',
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
                     onPressed: () {
                       clipCon.selectedItem.clear();
                       clipCon.isMultiSelectionValue(false);
@@ -61,7 +66,12 @@ class IOSEditClipPage extends StatelessWidget {
                     visible: clipCon.selectedItem.isNotEmpty,
                     child: CupertinoButton(
                       padding: EdgeInsets.only(right: 15),
-                      child: Text('Delete Clips'),
+                      child: Text(
+                        'Delete Clips',
+                        style: TextStyle(
+                          fontSize: 15,
+                        ),
+                      ),
                       onPressed: () {
                         clipCon.removeClip();
                       },
@@ -85,7 +95,12 @@ class IOSEditClipPage extends StatelessWidget {
                     visible: clipCon.isMultiSelectionEnabled == false,
                     child: CupertinoButton(
                       padding: EdgeInsets.only(right: 15),
-                      child: Text('Merge'),
+                      child: Text(
+                        'Merge',
+                        style: TextStyle(
+                          fontSize: 15,
+                        ),
+                      ),
                       onPressed: () {
                         clipCon.mergeRequest();
                       },

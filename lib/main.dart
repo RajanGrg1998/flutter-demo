@@ -53,20 +53,21 @@ class MyApp extends StatelessWidget {
           create: (context) => ClipController(),
         )
       ],
-      child: CupertinoApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         localizationsDelegates: <LocalizationsDelegate<dynamic>>[
           DefaultMaterialLocalizations.delegate,
           DefaultWidgetsLocalizations.delegate,
           DefaultCupertinoLocalizations.delegate,
         ],
-        theme: CupertinoThemeData(
-            brightness: Brightness.light,
-            // barBackgroundColor: Colors.black,
-            // brightness: Brightness.light,
-            textTheme: CupertinoTextThemeData(
-              textStyle: TextStyle(fontFamily: 'SF-Pro'),
-            )),
+        theme: ThemeData(fontFamily: 'SF-Pro'),
+        // theme: CupertinoThemeData(
+        //     brightness: Brightness.light,
+        //     // barBackgroundColor: Colors.black,
+        //     // brightness: Brightness.light,
+        //     textTheme: CupertinoTextThemeData(
+        //       textStyle: TextStyle(fontFamily: 'SF-Pro'),
+        //     )),
         title: 'Flutter Demo',
         home: RecordingPage(),
         builder: EasyLoading.init(),

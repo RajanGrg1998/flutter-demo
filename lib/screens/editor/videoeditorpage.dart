@@ -91,6 +91,7 @@ class _VideoEditorState extends State<VideoEditor> {
             child: Text(
               'Trim',
               style: TextStyle(
+                fontSize: 15,
                 color: Colors.white,
               ),
             ),
