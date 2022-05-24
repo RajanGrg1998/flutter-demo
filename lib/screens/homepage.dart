@@ -303,55 +303,61 @@ class _RecordingPageState extends State<RecordingPage>
                                   }
                                 },
                               ),
-                              SpeedDialChild(
-                                label: 'Pause Session',
-                                child: Icon(Icons.pause_sharp),
-                                onTap: () async {
-                                  if (!_cameraController!
-                                      .value.isRecordingPaused) {
-                                    await pauseVideoRecording();
-                                  }
-                                  showInSnackBar('Session Pause');
-                                },
-                              ),
-                              SpeedDialChild(
-                                  label: 'Stop Session',
-                                  child: Icon(Icons.stop_sharp),
-                                  onTap: () async {
-                                    onStopButtonPressed();
-                                    setState(() {
-                                      isChangeColor = false;
-                                    });
-                                    resetWatch();
-                                    if (videoPath == null) {
-                                      return;
-                                    }
-                                    clipCon.addFullSession(videoPath!);
+                              _cameraController!.value.isRecordingVideo!
+                                  ? SpeedDialChild(
+                                      label: 'Pause Session',
+                                      child: Icon(Icons.pause_sharp),
+                                      onTap: () async {
+                                        if (!_cameraController!
+                                            .value.isRecordingPaused) {
+                                          await pauseVideoRecording();
+                                        }
+                                        showInSnackBar('Session Pause');
+                                      },
+                                    )
+                                  : SpeedDialChild(),
+                              _cameraController!.value.isRecordingVideo!
+                                  ? SpeedDialChild(
+                                      label: 'Stop Session',
+                                      child: Icon(Icons.stop_sharp),
+                                      onTap: () async {
+                                        onStopButtonPressed();
+                                        setState(() {
+                                          isChangeColor = false;
+                                        });
+                                        resetWatch();
+                                        if (videoPath == null) {
+                                          return;
+                                        }
+                                        clipCon.addFullSession(videoPath!);
 
-                                    print(
-                                        'session: ${clipCon.fullSessionList}');
-                                    if (clipCon.clippedSessionList.isEmpty) {
-                                      return _showMyDialog(context, videoPath!);
-                                    }
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              IOSEditClipPage(),
-                                        ));
+                                        print(
+                                            'session: ${clipCon.fullSessionList}');
+                                        if (clipCon
+                                            .clippedSessionList.isEmpty) {
+                                          return _showMyDialog(
+                                              context, videoPath!);
+                                        }
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  IOSEditClipPage(),
+                                            ));
 
-                                    // if (_cameraController!
-                                    //     .value.isRecordingVideo!) {
+                                        // if (_cameraController!
+                                        //     .value.isRecordingVideo!) {
 
-                                    // }
+                                        // }
 
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //       builder: (context) => DemoPreviewPage(
-                                    //           filePath: videoPath!),
-                                    //     ));
-                                  }),
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //       builder: (context) => DemoPreviewPage(
+                                        //           filePath: videoPath!),
+                                        //     ));
+                                      })
+                                  : SpeedDialChild(),
                             ],
                           ),
                         ),
